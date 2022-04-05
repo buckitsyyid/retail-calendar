@@ -1,5 +1,5 @@
 {
-  ne"name": "retail-calendar",
+  "name": "retail-calendar",
   "version": "1.6.1",
   "description": "A configurable retail calendar",
   "homepage": "https://github.com/holonk/retail-calendar",
@@ -43,5 +43,5 @@
   },
   "dependencies": {
     "moment": "^2.25.3"
-  },
+  }
 }
