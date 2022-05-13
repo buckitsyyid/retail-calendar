@@ -25,11 +25,11 @@
     "lint-fix": "tslint --fix -p tsconfig.json",
     "build": "tsc",
     "test": "jest",
-    "prepare": "yarn run build",
+    "prepare": "npm run build",
     "prepublish": "tsc",
-    "prepublishOnly": "yarn test && npm run lint",
-    "preversion": "yarn run lint",
-    "version": "yarn run format && git add -A src",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
