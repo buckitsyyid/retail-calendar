@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LastDayBeforeEOMExceptLeapYearStrategy = void 0;
 var last_day_before_eom_1 = require("./last_day_before_eom");
 var moment_1 = __importDefault(require("moment"));
 var LastDayBeforeEOMExceptLeapYearStrategy = /** @class */ (function () {

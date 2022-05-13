@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CalendarWeek = void 0;
 var CalendarWeek = /** @class */ (function () {
     function CalendarWeek(weekOfYear, weekOfMonth, weekOfQuarter, monthOfYear, quarterOfYear, gregorianStartDate, gregorianEndDate) {
         this.weekOfYear = weekOfYear;

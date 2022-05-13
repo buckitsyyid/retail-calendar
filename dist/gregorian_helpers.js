@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.weekOfGregorianDate = void 0;
 var retail_calendar_1 = require("./retail_calendar");
 function weekOfGregorianDate(date, calendarOptions) {
     var year = date.getFullYear();

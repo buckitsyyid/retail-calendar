@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NRFCalendarOptions = exports.LeapYearStrategy = exports.WeekCalculation = exports.LastMonthOfYear = exports.LastDayOfWeek = exports.WeekGrouping = void 0;
 var WeekGrouping;
 (function (WeekGrouping) {
     WeekGrouping[WeekGrouping["Group445"] = 0] = "Group445";
