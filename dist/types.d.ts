@@ -35,7 +35,8 @@ export declare enum WeekCalculation {
 export declare enum LeapYearStrategy {
     Restated = 0,
     DropLastWeek = 1,
-    AddToPenultimateMonth = 2
+    AddToPenultimateMonth = 2,
+    AddToLastMonth = 3
 }
 export interface RetailCalendarOptions {
     weekGrouping: WeekGrouping;

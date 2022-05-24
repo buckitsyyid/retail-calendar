@@ -149,10 +149,18 @@ If `leapYearStrategy` is `LeapYearStrategy.AddToPenultimateMonth`
 
 extra week is "added" to the ELEVENTH month
 
+If `leapYearStrategy` is `LeapYearStrategy.AddToLastMonth`
+extra week is "added" to the TWELFTH month
+
+
 ```javascript
 // AddToPenultimateMonth calendar example for 445 Calendar.
 // 11th Month has 5 weeks instead of 4
 calendar.months[10].weeks.length //5
+
+// AddToLastMonth calendar example for 445 Calendar.
+// 12th Month has 5 weeks instead of 4
+calendar.months[11].weeks.length //5
 ```
 ### Options
 

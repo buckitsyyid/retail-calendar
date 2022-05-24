@@ -37,6 +37,7 @@ export enum LeapYearStrategy {
   Restated,
   DropLastWeek,
   AddToPenultimateMonth,
+  AddToLastMonth
 }
 
 export interface RetailCalendarOptions {

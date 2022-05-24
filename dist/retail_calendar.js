@@ -122,6 +122,9 @@ exports.RetailCalendarFactory = /** @class */ (function () {
         if (this.leapYearStrategy === types_1.LeapYearStrategy.AddToPenultimateMonth &&
             this.numberOfWeeks === 53)
             weekDistribution[10]++;
+        if (this.leapYearStrategy === types_1.LeapYearStrategy.AddToLastMonth &&
+            this.numberOfWeeks === 53)
+            weekDistribution[11]++;
         return weekDistribution;
     };
     Calendar.prototype.getWeekIndex = function (weekIndex) {
@@ -132,6 +135,8 @@ exports.RetailCalendarFactory = /** @class */ (function () {
             case types_1.LeapYearStrategy.Restated:
                 return weekIndex - 1;
             case types_1.LeapYearStrategy.AddToPenultimateMonth:
+                return weekIndex;
+            case types_1.LeapYearStrategy.AddToLastMonth:
                 return weekIndex;
             default:
                 return weekIndex === 52 ? -1 : weekIndex;

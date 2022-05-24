@@ -1,6 +1,3 @@
-import { LastDayBeforeEOMExceptLeapYearStrategy } from '../src/last_day_before_eom_except_leap_year';
-import { LastDayBeforeEOMStrategy } from './../src/last_day_before_eom';
-import { FirstBOWOfFirstMonth } from '../src/first_bow_of_first_month'
 import { RetailCalendarFactory } from '../src/retail_calendar'
 import {
   RetailCalendarOptions,
@@ -245,6 +242,44 @@ describe('RetailCalendar', () => {
         })
         it('adds a week to the 11th month', () => {
           const expectedMonthLengthsInWeeks = [4, 4, 5, 4, 4, 5, 4, 4, 5, 4, 5, 5]
+          const actualMonthLengthsInWeeks = calendar.months.map((month) => month.weeks.length)
+
+          expect(expectedMonthLengthsInWeeks).toEqual(actualMonthLengthsInWeeks)
+
+          const secondWeekInYear = calendar.weeks[1]
+          expect(secondWeekInYear.weekOfYear).toBe(1)
+
+        })
+      })
+
+      describe('when inserting a week in leap year last month', () => {
+        let calendar: RetailCalendar;
+
+        beforeEach(() => {
+          calendar = new RetailCalendarFactory(
+              { ...NRFCalendarOptions, weekGrouping: WeekGrouping.Group445, leapYearStrategy: LeapYearStrategy.AddToLastMonth },
+              2017,
+          )
+        })
+        it('keeps the first week in the year', () => {
+          const firstWeek = calendar.weeks[0]
+          expect(firstWeek.monthOfYear).toBe(1)
+          expect(firstWeek.weekOfMonth).toBe(0)
+          expect(firstWeek.weekOfYear).toBe(0)
+          expect(firstWeek.weekOfQuarter).toBe(0)
+          const firstMonth = calendar.months[0]
+          expect(firstMonth.weeks[0]).toEqual(firstWeek)
+          expect(firstMonth.weeks[0].weekOfYear).toEqual(0)
+        })
+        it('keeps the last week in the year', () => {
+          const lastWeek = calendar.weeks[52]
+          expect(lastWeek.monthOfYear).toBe(12)
+          expect(lastWeek.weekOfMonth).toBe(5) // 6 weeks in the month
+          expect(lastWeek.weekOfYear).toBe(52)
+        })
+
+        it('adds a week to the 12th month', () => {
+          const expectedMonthLengthsInWeeks = [4, 4, 5, 4, 4, 5, 4, 4, 5, 4, 4, 6]
           const actualMonthLengthsInWeeks = calendar.months.map((month) => month.weeks.length)
 
           expect(expectedMonthLengthsInWeeks).toEqual(actualMonthLengthsInWeeks)

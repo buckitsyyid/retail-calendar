@@ -43,6 +43,7 @@ var LeapYearStrategy;
     LeapYearStrategy[LeapYearStrategy["Restated"] = 0] = "Restated";
     LeapYearStrategy[LeapYearStrategy["DropLastWeek"] = 1] = "DropLastWeek";
     LeapYearStrategy[LeapYearStrategy["AddToPenultimateMonth"] = 2] = "AddToPenultimateMonth";
+    LeapYearStrategy[LeapYearStrategy["AddToLastMonth"] = 3] = "AddToLastMonth";
 })(LeapYearStrategy = exports.LeapYearStrategy || (exports.LeapYearStrategy = {}));
 exports.NRFCalendarOptions = {
     weekGrouping: WeekGrouping.Group454,

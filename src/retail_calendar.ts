@@ -1,5 +1,8 @@
 import moment from 'moment'
 import {
+  LastDayStrategy,
+  LastMonthOfYear,
+  LeapYearStrategy,
   RetailCalendar,
   RetailCalendarConstructor,
   RetailCalendarMonth,
@@ -7,17 +10,14 @@ import {
   RetailCalendarWeek,
   WeekCalculation,
   WeekGrouping,
-  LastDayStrategy,
-  LastMonthOfYear,
-  LeapYearStrategy,
 } from './types'
 
-import { CalendarMonth } from './calendar_month'
-import { CalendarWeek } from './calendar_week'
-import { LastDayBeforeEOMStrategy } from './last_day_before_eom'
-import { LastDayNearestEOMStrategy } from './last_day_nearest_eom'
-import { FirstBOWOfFirstMonth } from './first_bow_of_first_month'
-import { LastDayBeforeEOMExceptLeapYearStrategy } from './last_day_before_eom_except_leap_year'
+import {CalendarMonth} from './calendar_month'
+import {CalendarWeek} from './calendar_week'
+import {LastDayBeforeEOMStrategy} from './last_day_before_eom'
+import {LastDayNearestEOMStrategy} from './last_day_nearest_eom'
+import {FirstBOWOfFirstMonth} from './first_bow_of_first_month'
+import {LastDayBeforeEOMExceptLeapYearStrategy} from './last_day_before_eom_except_leap_year'
 
 export const RetailCalendarFactory: RetailCalendarConstructor = class Calendar
   implements RetailCalendar {
@@ -204,6 +204,12 @@ export const RetailCalendarFactory: RetailCalendarConstructor = class Calendar
     )
       weekDistribution[10]++
 
+    if (
+        this.leapYearStrategy === LeapYearStrategy.AddToLastMonth &&
+        this.numberOfWeeks === 53
+    )
+      weekDistribution[11]++
+
     return weekDistribution
   }
 
@@ -216,6 +222,8 @@ export const RetailCalendarFactory: RetailCalendarConstructor = class Calendar
       case LeapYearStrategy.Restated:
         return weekIndex - 1
       case LeapYearStrategy.AddToPenultimateMonth:
+        return weekIndex
+      case LeapYearStrategy.AddToLastMonth:
         return weekIndex
       default:
         return weekIndex === 52 ? -1 : weekIndex
